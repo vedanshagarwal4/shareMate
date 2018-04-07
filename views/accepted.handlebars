@@ -8,18 +8,15 @@
 						<h3>{{acceptor}}</h3>
 						<h3>{{generator}}</h3>
 						{{description}}<br>
-						<a href="/reopen">
-						  <div class="button">
-						   Reopen
-						  </div>
-						  <input type="text" value={{id}} name="acceptvalue" style="display:none">
-						</a>
-						<a href="/accept">
-						<div class="button">
-						   Close
-						 </div>
-						 <input type="text" value={{id}} style="display:none">
-						</a>
+						<a href="/profile/{{acceptor}}">{{acceptor}}</a>
+						<form method="post" action="/reopen">
+						<input type="text" name ="accvalue" value={{id}} style="display:none">
+						<input type="submit" value="Reopen" class="button">
+						</form>
+						<form method="post" action="/close">
+						<input type="text"  name ="delvalue" value={{id}} style="display:none">
+						<input type="submit" value="Close" class="button">
+						</form>
 						
 					</div>
 				<hr>
