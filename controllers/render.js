@@ -14,7 +14,9 @@ exports.head=function(req,res){
 			res.render('request',{
 			currentUser:req.session.user.roll,
 			works:rworks
-		     });
+			 });
+			// console.log(rworks[0]);
+		    
 			});
 		
   }

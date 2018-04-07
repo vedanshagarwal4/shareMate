@@ -19,6 +19,8 @@
 					</div>
 				</a>
 			</div>
+
+
 			<div>
 				<div class="button" style="float: right;" onclick="openModal('request')">
 					Add Request
@@ -45,10 +47,18 @@
 			{{#if works}}
 				{{#each works}}
 					<div class="list-ele full">
+					    <h3>{{id}}</h3>
 						<h3>{{roll}}</h3>
-						{{description}}<br>
-						<a href="/profile/{{roll}}">XXX</a>
-					    <a href="/deleterequest">Delete</a>
+						{{description}}
+						<a href="/profile/{{roll}}">{{roll}}</a>
+						<form method="post" action="/acceptrequest">
+						<input type="text" name = "acceptvalue">
+						<input type="submit" value="Accept">
+						</form>
+						<form method="post" action="/deleterequest">
+						<input type="text" name = "deletevalue">
+						<input type="submit" value="Delete">
+						</form>
 					</div>
 					<hr>
 				{{/each}}

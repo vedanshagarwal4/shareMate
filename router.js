@@ -21,6 +21,7 @@ appRouter.get('/log',(req,res) => {
 	res.redirect('/');
 });
 appRouter.post('/addrequest',Authentication.request);
+appRouter.post('/acceptrequest',Authentication.acceptrequest);
 appRouter.post('/deleterequest',Authentication.deleterequest);
 appRouter.use('/profile',profileRouter);
 profileRouter.use(express.static(__dirname + '/public'));
