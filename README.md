@@ -2,6 +2,7 @@
 ## Everything's near you !
 
 Team Name : Spartans
+
 Collaborators : Noel Aby Das , Vedansh Agarwal, Abhijeet Mathur
 Event : Dotslash
 
