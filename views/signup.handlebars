@@ -1,0 +1,25 @@
+<div>
+   <form method="post" action="/new" name="f" >
+      Name : <input type="text" name="name" required><br><br>
+      Roll No. :<input type="text" name="roll" required><br><br>
+      Email : <input type="email" name="email" required><br><br>
+      Password : <input type="password" name="password" required><br><br>
+      Phone No. : <input type="number" name="phone" required><br><br>
+      Hostel : <input type="text" name="hostel" required><br><br>
+      Room No. : <input type="text" name="room" required><br><br>
+      <input type="submit" onclick="return check()">
+   </form>
+</div>
+
+<script type="text/javascript">
+      
+         function check()
+         {
+            if(!(document.f.name.value) || !(document.f.roll.value) || !(document.f.email.value) || !(document.f.password.value) || !(document.f.phone.value) || !(document.f.hostel.value) || !(document.f.room.value))
+            {
+               alert('All the fields are mandatory !');
+            }
+         }
+
+
+</script>
