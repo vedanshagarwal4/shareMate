@@ -13,12 +13,19 @@
 						Your Profile
 					</div>
 				</a>
+				<a href="/accepted/{{currentUser}}">
+				    <div class="menu-ele">
+						Accepted Requests
+					</div>
+				</a>
 				<a href="/logout">
 					<div class="menu-ele">
 						Logout
 					</div>
 				</a>
 			</div>
+
+
 			<div>
 				<div class="button" style="float: right;" onclick="openModal('request')">
 					Add Request
@@ -45,10 +52,18 @@
 			{{#if works}}
 				{{#each works}}
 					<div class="list-ele full">
+					    <h3>{{id}}</h3>
 						<h3>{{roll}}</h3>
-						{{description}}<br>
-						<a href="/profile/{{roll}}">XXX</a>
-					    <a href="/deleterequest">Delete</a>
+						{{description}}
+						<a href="/profile/{{roll}}">{{roll}}</a>
+						<form method="post" action="/acceptrequest">
+						<input type="text" name ="acceptvalue" value={{id}} style="display:none">
+						<input type="submit" value="Accept" class="button">
+						</form>
+						<form method="post" action="/deleterequest">
+						<input type="text"  name ="deletevalue" value={{id}} style="display:none">
+						<input type="submit" value="Ignore" class="button">
+						</form>
 					</div>
 					<hr>
 				{{/each}}

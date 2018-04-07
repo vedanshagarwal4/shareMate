@@ -113,7 +113,7 @@ exports.request=function(req,res){
 exports.profile = function(req,res){
 	if(req.session && req.session.user){
 		var roll = req.params.currentUser;
-		console.log(roll);
+		// console.log(roll);
 		let que= `select * from main where roll = '${roll}'`;
 		con.query(que,function(err,results,fields){
 			if(err)
@@ -129,7 +129,62 @@ exports.profile = function(req,res){
 		});
 	}
 }
-// exports.deleterequest = function(req,res){
-// 	var id = req.session.user.roll;
-// 	let que = `delete from requests where 
-// }
+exports.deleterequest = function(req,res){
+	var id =req.body.deletevalue;
+	var roll = req.session.user.roll;
+	let que = `delete from requests where roll ='${roll}' and id='${id}'`;
+	con.query(que,function(err,results,fields){
+			if(err)
+			throw err;
+	});
+	res.redirect('/request');
+}
+exports.acceptrequest =function(req,res){
+	var id = req.body.acceptvalue;
+	var acceptor = req.session.user.roll;
+	let que =`select * from requests where id ='${id}'`;
+
+	con.query(que,function(err,results,fields){
+			if(err)
+			throw err;
+		var generator = results[0].roll;
+		var description = results[0].description;
+		que = `insert into accepted (acceptor,id,generator,description) values ('${acceptor}','${id}','${generator}','${description}')`;
+		con.query(que,function(err,results,fields){
+				if(err)
+				throw err;
+		});
+		que = `delete from requests where id='${id}'`;
+		con.query(que,function(err,results,fields){
+				if(err)
+				throw err;
+		});
+		res.redirect('/request');
+
+	});
+	
+
+
+}
+exports.reopen=function(req,res){
+	var id = req.body.acceptvalue;
+	que = `select * from accepted where id ='${id}'`;
+	con.query(que,function(err,results,fields){
+				if(err)
+				throw err;
+			var roll = results[0].generator;
+			var description =results[0].description;.
+			que = `insert into requests (id ,roll ,description) values('${id}','${roll}','${description}')`;
+			con.query(que,function(err,results,fields){
+				if(err)
+				throw err;
+					que = `delete from requests where id='${id}'`;
+			     	con.query(que,function(err,results,fields){
+						if(err)
+						throw err;
+				});
+		res.redirect('/request');
+		});
+			
+		});
+}

@@ -1,0 +1,33 @@
+<div>
+<div class="list">
+			<!--works-->
+			{{#if works}}
+				{{#each works}}
+					<div class="list-ele full">
+					    <h3>{{id}}</h3>
+						<h3>{{acceptor}}</h3>
+						<h3>{{generator}}</h3>
+						{{description}}<br>
+						<a href="/reopen">
+						  <div class="button">
+						   Reopen
+						  </div>
+						  <input type="text" value={{id}} name="acceptvalue" style="display:none">
+						</a>
+						<a href="/accept">
+						<div class="button">
+						   Close
+						 </div>
+						 <input type="text" value={{id}} style="display:none">
+						</a>
+						
+					</div>
+				<hr>
+				{{/each}}
+			{{else}}
+				<div style="padding-top: 20px;text-align: center;">
+					No accepted requests yet.
+				</div>
+			{{/if}}	
+</div>
+</div>

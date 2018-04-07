@@ -2,6 +2,7 @@ const express = require('express');
 const Authentication = require('./authentication');
 const appRouter = express.Router();
 const profileRouter = express.Router();
+const acceptRouter = express.Router();
 const Render = require('./controllers/render');
 appRouter.get("/",(req,res)=>{
 	res.render("index");
@@ -21,9 +22,12 @@ appRouter.get('/log',(req,res) => {
 	res.redirect('/');
 });
 appRouter.post('/addrequest',Authentication.request);
+appRouter.post('/acceptrequest',Authentication.acceptrequest);
 appRouter.post('/deleterequest',Authentication.deleterequest);
 appRouter.use('/profile',profileRouter);
 profileRouter.use(express.static(__dirname + '/public'));
 profileRouter.get('/:currentUser',Authentication.profile);
-
+appRouter.use('/accepted',acceptRouter);
+acceptRouter.use(express.static(__dirname + '/public'));
+acceptRouter.get('/:currentUser',Render.acceptedRequests);
 module.exports = appRouter;

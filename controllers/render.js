@@ -14,7 +14,9 @@ exports.head=function(req,res){
 			res.render('request',{
 			currentUser:req.session.user.roll,
 			works:rworks
-		     });
+			 });
+			// console.log(rworks[0]);
+		    
 			});
 		
   }
@@ -24,3 +26,25 @@ exports.head=function(req,res){
 	}
 }
 
+exports.acceptedRequests = function(req,res){
+	if(req.session && req.session.user){
+	var roll = req.session.user.roll;
+	var aworks = {} ;
+	que = `select * from accepted where generator = '${roll}'`;
+	
+	con.query(que,function(err,results,fields){
+				if(err)
+				throw err;
+                aworks = results;
+       res.render('accepted',{
+		works:aworks
+		
+	});
+		});
+
+}
+else{
+		req.session.destroy();
+		res.redirect('/');
+	}
+}
