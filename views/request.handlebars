@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="main-body">
 
 <div class="flexed">
@@ -77,3 +78,79 @@
 </div>
 </div>
 
+=======
+<div class="main-body">
+
+<div class="flexed">
+		<div class="page">
+			<div>
+				<div class="tab" style="float: right;" onclick="navigation()"><i class="fa fa-bars"></i></div>
+				<div><h1>shareMate</h1></div>
+				
+			</div>
+			<div id="navmenu" class="menu">
+				<a href="/profile/{{currentUser}}">
+					<div class="menu-ele">
+						Your Profile
+					</div>
+				</a>
+				<a href="/logout">
+					<div class="menu-ele">
+						Logout
+					</div>
+				</a>
+			</div>
+
+
+			<div>
+				<div class="button" style="float: right;" onclick="openModal('request')">
+					Add Request
+				</div>
+				<h2>Requests</h2>
+			</div>
+			<div class="modal" id="request">
+	             <div class="modal-content">
+		           <div class="close" onclick="closeModal('request')">&times;</div>
+		              	<div class="modal-header">
+			                <h2>Create Request</h2>
+						</div>
+				   <div class="modal-body">
+						<form method="post" action="/addrequest">
+							<label for="description">Request</label><br>
+							<input type="text" name="description"><br><br>
+							<input type="submit" value="Request" class="button"><br><br>
+						</form>
+				   </div>
+				  </div>
+            </div>
+			<div class="list">
+			<!--works-->
+			{{#if works}}
+				{{#each works}}
+					<div class="list-ele full">
+					    <h3>{{id}}</h3>
+						<h3>{{roll}}</h3>
+						{{description}}
+						<a href="/profile/{{roll}}">{{roll}}</a>
+						<form method="post" action="/acceptrequest">
+						<input type="text" name = "acceptvalue">
+						<input type="submit" value="Accept">
+						</form>
+						<form method="post" action="/deleterequest">
+						<input type="text" name = "deletevalue">
+						<input type="submit" value="Delete">
+						</form>
+					</div>
+					<hr>
+				{{/each}}
+			{{else}}
+				<div style="padding-top: 20px;text-align: center;">
+					No work is added yet.
+				</div>
+			{{/if}}
+			</div>
+		</div>
+</div>
+</div>
+
+>>>>>>> bd753c01ff3c315053f2482be081cd69d79f4271
