@@ -51,7 +51,7 @@ else{
 }
 exports.leaderboard=function(req,res){
 	if(req.session && req.session.user){
-		let que=`select * from main order by points`;
+		let que=`select * from main order by points desc`;
 		con.query(que,function(err,results,feilds){
 			if(err){
 				console.log(err);
