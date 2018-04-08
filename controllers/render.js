@@ -49,3 +49,22 @@ else{
 		res.redirect('/');
 	}
 }
+exports.leaderboard=function(req,res){
+	if(req.session && req.session.user){
+		let que=`select * from main order by points`;
+		con.query(que,function(err,results,feilds){
+			if(err){
+				console.log(err);
+			}
+			res.render('leaderboard',{
+				board:results,
+				currentUser:results[0].roll
+
+			});
+
+		});
+	}
+	else{
+		res.redirect('/request');
+	}	
+}	

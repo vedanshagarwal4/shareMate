@@ -22,6 +22,7 @@ appRouter.get('/logout',Authentication.logout);
 appRouter.get('/log',(req,res) => {
 	res.redirect('/');
 });
+appRouter.get('/invite',Authentication.invite);
 appRouter.post('/addrequest',Authentication.request);
 appRouter.post('/acceptrequest',Authentication.acceptrequest);
 appRouter.post('/deleterequest',Authentication.deleterequest);
@@ -33,4 +34,5 @@ acceptRouter.use(express.static(__dirname + '/public'));
 acceptRouter.get('/:currentUser',Render.acceptedRequests);
 appRouter.post('/reopen',Authentication.reopen);
 appRouter.post('/close',Authentication.close);
+appRouter.get('/leaderboard',Render.leaderboard);
 module.exports = appRouter;

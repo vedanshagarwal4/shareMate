@@ -9,6 +9,11 @@
 				
 			</div>
 			<div id="navmenu" class="menu">
+			    <a href ="/invite">
+			    <div class="menu-ele">
+					Invite Member
+				</div>
+			    </a>
 				<a href="/profile/{{currentUser}}">
 					<div class="menu-ele">
 						Your Profile
@@ -17,6 +22,11 @@
 				<a href="/accepted/{{currentUser}}">
 				    <div class="menu-ele">
 						Accepted Requests
+					</div>
+				</a>
+				<a href="/leaderboard">
+				    <div class="menu-ele">
+						LeaderBoard
 					</div>
 				</a>
 				<a href="/logout">
@@ -58,6 +68,7 @@
 						{{description}}
 						<a href="/profile/{{roll}}">{{roll}}</a>
 						<form method="post" action="/acceptrequest">
+						<input type="text" name ="original" value={{roll}} style="display:none">
 						<input type="text" name ="acceptvalue" value={{id}} style="display:none">
 						<input type="submit" value="Accept" class="button">
 						</form>
