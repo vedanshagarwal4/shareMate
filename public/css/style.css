@@ -366,6 +366,12 @@ button{
 .modal-body{
   font-size: 20px;
 }
+.modal-body input{
+  width:80%;
+}
+.modal-body .button{
+  width:30%;
+}
 
 @media only screen and (max-width: 1050px){
   body{font-size:90%;}

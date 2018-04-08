@@ -205,6 +205,7 @@ exports.close = function(req,res){
 		throw err;
 	    var roll = results[0].acceptor;
 	    que= `update main set points = points+2 where roll = '${roll}'`;
+	      res.redirect('/feedback/'+roll);
 	    con.query(que,function(err,results,fields){
 		    if(err)
 		    throw err;
@@ -215,7 +216,8 @@ exports.close = function(req,res){
 		    if(err)
 		    throw err;
         });
-    res.redirect('/request');
+   
+
 		
 }
 exports.invite = function(req,res){
@@ -258,4 +260,43 @@ var mail = {
   });
 });
 
+}
+exports.feedback = function(req,res){
+	var roll = req.params.roll;
+	var sender = mailer.createTransport({
+		service : 'gmail',
+		auth: {
+			user: 'abhijeetmathur786@gmail.com',
+			pass: 'Anujay786@'
+		},
+		tls: {
+        	rejectUnauthorized: false
+    	}
+	});
+	let que = `select email from main where roll = '${roll}'`;
+	con.query(que,function(err,results,fields){
+		if(err)
+			throw err;
+        var usermail = results[0].email;
+        console.log(usermail);
+        var mail = {
+		from : 'abhijeetmathur786@gmail.com',
+		to : usermail,
+		subject : `Response`,
+		text : `Your request is approved`
+	};
+
+	sender.sendMail(mail,(error,msg) => {
+		if(error){
+			console.log(error);
+			sender.close();
+		}
+		else {
+			console.log('Success: ' + msg.response);
+			sender.close();
+		}
+	});
+	res.redirect('/request');
+	});
+	
 }

@@ -60,8 +60,8 @@
 				   <div class="modal-body">
 						<form method="post" action="/addrequest">
 <!--							<label for="description">Request</label><br>-->
-							<input type="text" name="description" placeholder="Your request" width="800px" style="margin-left:40%"><br><br>
-							<input type="submit" value="Request" class="button" style="margin-left:40%"><br><br>
+							<input type="text" name="description" placeholder="Your request" style="margin-left:10%"><br><br>
+							<input type="submit" value="Request" class="button" style="margin-left:35%"><br><br>
 						</form>
 				   </div>
 				  </div>
@@ -81,6 +81,7 @@
 						</form>
 						<form method="post" action="/acceptrequest" style="margin-left:0px;float:left">
 						<input type="text" name ="acceptvalue" value={{id}} style="display:none">
+						<input type="text" name ="original" value={{roll}} style="display:none">
 						<b><input type="submit" value="&#10004" class="button"   style="width:35%;padding-right:10px"></b>
 						</form>
 						

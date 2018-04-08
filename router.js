@@ -4,6 +4,7 @@ const Authentication = require('./authentication');
 const appRouter = express.Router();
 const profileRouter = express.Router();
 const acceptRouter = express.Router();
+const feedRouter = express.Router();
 const Render = require('./controllers/render');
 appRouter.get("/",(req,res)=>{
 	res.render("index");
@@ -35,4 +36,8 @@ acceptRouter.get('/:currentUser',Render.acceptedRequests);
 appRouter.post('/reopen',Authentication.reopen);
 appRouter.post('/close',Authentication.close);
 appRouter.get('/leaderboard',Render.leaderboard);
+
+appRouter.use('/feedback',feedRouter);
+feedRouter.use(express.static(__dirname + '/public'));
+feedRouter.get('/:roll',Authentication.feedback);
 module.exports = appRouter;
