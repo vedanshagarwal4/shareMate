@@ -1,0 +1,49 @@
+<div class="main-body">
+<div class="flexed">
+	<div class="page">
+		<div>
+		<div class="tab" style="float: right;" onclick="navigation()"><i class="fa fa-bars"></i></div>
+		<h2>leaderboard</h2>
+		</div>
+		 <div id="navmenu" class="menu">
+			<a href="/profile/{{currentUser}}">
+				<div class="menu-ele">
+					Your Profile
+				</div>
+			</a>
+			<a href="/logout">
+				<div class="menu-ele">
+					Logout
+				</div>
+			</a>
+		</div>
+		<div class="list">
+			<!--works-->
+			{{#if board}}
+			<div id="collection" class="data-table" style="overflow-x: scroll;max-width:100%;" align="center">
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th>Name</th>
+							<th>Email ID</th>
+							<th>Points</th>
+						</tr>
+					</thead>
+					<tbody>
+					{{#each board}}
+						<tr {{#headVal roll ../currentUser}}class="active"{{/headVal}}>
+							<td>{{plus @index 1}}</td>
+							<td>{{name}}</td>
+							<td>{{email}}</td>
+							<td>{{points}}</td>
+						</tr>
+					{{/each}}
+					</tbody>
+				</table>
+			</div>
+			{{/if}}
+		</div>
+	</div>
+</div>	
+</div>	

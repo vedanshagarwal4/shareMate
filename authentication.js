@@ -2,6 +2,7 @@
 const con = require('./config');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
+const mailer = require('nodemailer');
 
 exports.signup = function(req,res)
 {
@@ -36,7 +37,7 @@ exports.signup = function(req,res)
 
 		
 
-		que = `insert into main (name,roll,email,password,phone,hostel,room) values('${name}','${roll}','${email}','${hash}','${phone}','${hostel}','${room}')`;
+		que = `insert into main (name,roll,email,password,phone,hostel,room,points) values('${name}','${roll}','${email}','${hash}','${phone}','${hostel}','${room}',0)`;
 
 		con.query(que,function(qerr,qres){
 			if(qerr)
@@ -48,7 +49,6 @@ exports.signup = function(req,res)
 	});
 
 	});
-
 });
 }
 exports.login= function(req,res){
@@ -125,7 +125,8 @@ exports.profile = function(req,res){
 				email:results[0].email,
 				phone:results[0].phone,
 				hostel:results[0].hostel,
-				room:results[0].room
+				room:results[0].room,
+				points:results[0].points
 			});
 		});
 	}
@@ -142,10 +143,11 @@ exports.deleterequest = function(req,res){
 }
 exports.acceptrequest =function(req,res){
 	var id = req.body.acceptvalue;
+	var or_roll=req.body.original;
 	var acceptor = req.session.user.roll;
+	if(or_roll!=acceptor){
 	let que =`select * from requests where id ='${id}'`;
-
-	con.query(que,function(err,results,fields){
+     con.query(que,function(err,results,fields){
 			if(err)
 			throw err;
 		var generator = results[0].roll;
@@ -160,11 +162,16 @@ exports.acceptrequest =function(req,res){
 				if(err)
 				throw err;
 		});
+		
+		// alert('Cannot accept your own request');
 		res.redirect('/request');
 
 	});
 	
-
+   }
+   else{
+   	res.redirect('/request');
+   }
 
 }
 exports.reopen=function(req,res){
@@ -192,11 +199,63 @@ exports.reopen=function(req,res){
 }
 exports.close = function(req,res){
 	var id = req.body.delvalue;
-	let que =`delete from accepted where id='${id}'`;
+	let que =`select * from accepted where id='${id}'`;
     con.query(que,function(err,results,fields){
 		if(err)
 		throw err;
+	    var roll = results[0].acceptor;
+	    que= `update main set points = points+2 where roll = '${roll}'`;
+	    con.query(que,function(err,results,fields){
+		    if(err)
+		    throw err;
+        });
     });
+    que =`delete from accepted where id='${id}'`;
+    con.query(que,function(err,results,fields){
+		    if(err)
+		    throw err;
+        });
     res.redirect('/request');
 		
+}
+exports.invite = function(req,res){
+	var sender = mailer.createTransport({
+		service : 'gmail',
+		auth: {
+			user: 'abhijeetmathur786@gmail.com',
+			pass: 'Anujay786@'
+		},
+		tls: {
+        	rejectUnauthorized: false
+    	}
+	});
+	// let que=`select email from main`;
+	
+var maillist = [
+  'vedanshagarwal4@gmail.com',
+  'noelabydas@gmail.com'
+];
+
+maillist.forEach(function (to, i , array) {
+
+var mail = {
+		from : 'abhijeetmathur786@gmail.com',
+		// to : req.body.email,
+		subject : `Invitation to see requests`,
+		text : `Your have a new invitation`
+	};
+
+  mail.to = to;
+  sender.sendMail(mail, function (err) {
+    if (err) { 
+      console.log('Sending to ' + to + ' failed: ' + err);
+      return;
+    } else { 
+      console.log('Sent to ' + to);
+    }
+
+    if (i === maillist.length - 1) { mail.transport.close(); }
+  });
+});
+
 }
