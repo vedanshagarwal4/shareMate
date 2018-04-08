@@ -300,3 +300,24 @@ exports.feedback = function(req,res){
 	});
 	
 }
+// exports.emailVal = function(req,res){
+// 	let que = `select email from main`;
+// 	let input = req.query.e;
+// 	con.query(que,function(err,results,fields){
+// 		if(err){
+// 			console.log(err);
+// 		}
+// 		let check = results.map((obj) => {
+// 			return obj.name;
+// 		});
+// 		if(input.indexOf(' ')>=0){
+// 			res.send('Space is not allowed...')
+// 		}
+// 		else if(check.indexOf(input)>=0){
+// 			res.send('Email already exists...');
+// 		}
+// 		else{
+// 			res.send();
+// 		}
+// 	});
+// }

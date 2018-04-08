@@ -1,6 +1,16 @@
 <div class="flexed">
 	<div class="page">
+	    <div>
+				<div class="tab" style="float: right;" onclick="navigation()"><i class="fa fa-bars"></i></div>
+				<div><h1>shareMate <i class="fa fa-users" aria-hidden="true"></i></h1></div>
+				
+			</div>
 		 <div id="navmenu" class="menu">
+		    <a href="/request">
+				<div class="menu-ele">
+					Home
+				</div>
+			</a>
 			<a href="/profile/{{currentUser}}">
 				<div class="menu-ele">
 					Your Profile
@@ -12,10 +22,11 @@
 				</div>
 			</a>
 		</div>
+		 
 		<div class="list">
 			<!--works-->
 			{{#if board}}
-			<div id="collection" class="data-table" style="overflow-x: scroll;max-width:100%;" align="center">
+			<div id="collection" class="data-table" style="overflow-x: scroll;max-width:100%;" align="center"><br><br>
 				<table>
 					<thead>
 						<tr>

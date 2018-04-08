@@ -287,9 +287,10 @@ li.twitter:hover {
  <form name="f" method="post" action="/new">
   <input type="text" name="name" placeholder="Name" required>
   <br>
-  <input type="text" name="roll" placeholder="Roll Number" required>
+  <input type="text" name="roll" placeholder="Roll Number" id ="roll" required>
   <br>
-  <input type="email" name="email" placeholder="Email" required>
+  <input type="email" name="email" placeholder="Email"  autocomplete="off" id ="emailV" required>
+  <p class="warning" id="eventWar"></p><br>
   <br>
   <input type="password" name="password" placeholder="Password" required>
   <br>
@@ -298,7 +299,7 @@ li.twitter:hover {
   <input type="text" name="hostel" placeholder="Hostel Name" required>
   <br>
   <input type="text" name="room" placeholder="Room Number" required>
-  <input type="submit" value="Sign Up">
+  <input type="submit" value="Sign Up" id='submit'>
   
 </div>
 <div class="login">
@@ -308,7 +309,6 @@ li.twitter:hover {
 
 </body>
 <script type="text/javascript">
-      
          function check()
          {
             if(!(document.f.name.value) || !(document.f.roll.value) || !(document.f.email.value) || !(document.f.password.value) || !(document.f.phone.value) || !(document.f.hostel.value) || !(document.f.room.value))
@@ -316,6 +316,4 @@ li.twitter:hover {
                alert('All the fields are mandatory !');
             }
          }
-
-
 </script>

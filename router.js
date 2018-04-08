@@ -24,6 +24,7 @@ appRouter.get('/log',(req,res) => {
 	res.redirect('/');
 });
 appRouter.get('/invite',Authentication.invite);
+// appRouter.get('/emailVal',Authentication.emailVal);
 appRouter.post('/addrequest',Authentication.request);
 appRouter.post('/acceptrequest',Authentication.acceptrequest);
 appRouter.post('/deleterequest',Authentication.deleterequest);
