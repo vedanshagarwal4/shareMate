@@ -1,11 +1,19 @@
-
+<style>
+    .link:hover{
+        text-decoration:underline;
+    }
+    .link{
+        font-size:25px;
+        margin-right:9%;
+    }
+</style>
 <div class="main-body">
 
 <div class="flexed">
 		<div class="page">
 			<div>
 				<div class="tab" style="float: right;" onclick="navigation()"><i class="fa fa-bars"></i></div>
-				<div><h1>shareMate</h1></div>
+				<div><h1>shareMate <i class="fa fa-users" aria-hidden="true"></i></h1></div>
 				
 			</div>
 			<div id="navmenu" class="menu">
@@ -28,10 +36,10 @@
 
 
 			<div>
-				<div class="button" style="float: right;" onclick="openModal('request')">
+				<div class="button" style="text-align:center;width:30%;margin-right:0%;float:right" onclick="openModal('request')">
 					Add Request
 				</div>
-				<h2>Requests</h2>
+				<br><br>
 			</div>
 			<div class="modal" id="request">
 	             <div class="modal-content">
@@ -41,9 +49,9 @@
 						</div>
 				   <div class="modal-body">
 						<form method="post" action="/addrequest">
-							<label for="description">Request</label><br>
-							<input type="text" name="description"><br><br>
-							<input type="submit" value="Request" class="button"><br><br>
+<!--							<label for="description">Request</label><br>-->
+							<input type="text" name="description" placeholder="Your request" width="800px" style="margin-left:40%"><br><br>
+							<input type="submit" value="Request" class="button" style="margin-left:40%"><br><br>
 						</form>
 				   </div>
 				  </div>
@@ -53,19 +61,22 @@
 			{{#if works}}
 				{{#each works}}
 					<div class="list-ele full">
-					    <h3>{{id}}</h3>
-						<h3>{{roll}}</h3>
-						{{description}}
-						<a href="/profile/{{roll}}">{{roll}}</a>
-						<form method="post" action="/acceptrequest">
-						<input type="text" name ="acceptvalue" value={{id}} style="display:none">
-						<input type="submit" value="Accept" class="button">
-						</form>
-						<form method="post" action="/deleterequest">
+					    <h6 style="float:right;margin-right:10%">Roll no. : {{roll}}</h6>
+						<h6>Request Id : {{id}}</h6>
+						<a href="/profile/{{roll}}" class="link" style="float:right">View Profile</a>
+						<h5>Description : {{description}}</h5>
+						<form method="post" action="/deleterequest" style="float:right;margin-right:3%;padding-right:5px">
 						<input type="text"  name ="deletevalue" value={{id}} style="display:none">
-						<input type="submit" value="Ignore" class="button">
+						<input type="submit" value="&#10008" class="button"  style="width:35%">
 						</form>
+						<form method="post" action="/acceptrequest" style="margin-left:0px;float:left">
+						<input type="text" name ="acceptvalue" value={{id}} style="display:none">
+						<b><input type="submit" value="&#10004" class="button"   style="width:35%;paddding-right:10px"></b>
+						</form>
+						
+						<br>
 					</div>
+					<br>
 					<hr>
 				{{/each}}
 			{{else}}

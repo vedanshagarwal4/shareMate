@@ -1,23 +1,44 @@
-<div>
-<div class="list">
+<style>
+    .link:hover{
+        text-decoration:underline;
+    }
+    .link{
+        font-size:25px;
+        margin-right:9%;
+    }
+</style>
+<div class="main-body">
+
+<div class="flexed">
+		<div class="page">
+			<div>
+				<div><h1>shareMate <i class="fa fa-users" aria-hidden="true"></i></h1></div>
+				
+			</div>
+			<div style="float:right">Accepted requests</div>
+<br>
+			<div>
+				
+		<div class="list">
 			<!--works-->
 			{{#if works}}
 				{{#each works}}
 					<div class="list-ele full">
-					    <h3>{{id}}</h3>
-						<h3>{{acceptor}}</h3>
-						<h3>{{generator}}</h3>
-						{{description}}<br>
-						<a href="/profile/{{acceptor}}">{{acceptor}}</a>
-						<form method="post" action="/reopen">
-						<input type="text" name ="accvalue" value={{id}} style="display:none">
-						<input type="submit" value="Reopen" class="button">
-						</form>
-						<form method="post" action="/close">
-						<input type="text"  name ="delvalue" value={{id}} style="display:none">
-						<input type="submit" value="Close" class="button">
-						</form>
+					    <h6 style="float:right;margin-right:10%">Request Id : {{id}}</h6>
+						<h6>Accepted by : {{acceptor}}</h6>
+<!--						<h3>{{generator}}</h3>-->
+                    <a href="/profile/{{acceptor}}" style="float:right" class="link">View profile</a>
+						<h5>Description : {{description}}</h5>
 						
+						<form method="post" action="/reopen" style="float:right;margin-right:3%;padding-right:5px">
+						<input type="text" name ="accvalue" value={{id}} style="display:none">
+						<input type="submit" value="&#10008" class="button">
+						</form>
+						<form method="post" action="/close" style="margin-left:0px;float:left">
+						<input type="text"  name ="delvalue" value={{id}} style="display:none">
+						<input type="submit" value="&#10004" class="button">
+						</form>
+						<br>
 					</div>
 				<hr>
 				{{/each}}
@@ -27,4 +48,13 @@
 				</div>
 			{{/if}}	
 </div>
+		</div>
 </div>
+</div>
+
+
+
+
+
+
+
