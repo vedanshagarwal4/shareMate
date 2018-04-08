@@ -259,7 +259,7 @@ var mail = {
     if (i === maillist.length - 1) { mail.transport.close(); }
   });
 });
-
+res.redirect('/request');
 }
 exports.feedback = function(req,res){
 	var roll = req.params.roll;
