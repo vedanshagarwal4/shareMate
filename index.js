@@ -1,15 +1,20 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const bodyParser = require('body-parser');
 const router = require('./router');
 const exphbs = require('express-handlebars');
 var session = require('client-sessions');
 var hbshelpers = require('./helpers/helpers');
+const fileUpload = require('express-fileupload');
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/views'));
 app.use(bodyParser.urlencoded({extended:true}));
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
+app.use(fileUpload());
+
 app.use(session({
 	cookieName: 'session',
 	secret: 'random_string_goes_here',

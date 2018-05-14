@@ -3,9 +3,11 @@ const con = require('./config');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const mailer = require('nodemailer');
+const fileUpload = require('express-fileupload');
 
 exports.signup = function(req,res)
 {
+	// var message = ' ';
 	var name=req.body.name;
 	var roll=req.body.roll;
 	var email=req.body.email;
@@ -18,26 +20,31 @@ exports.signup = function(req,res)
 		email:req.body.email,
 		roll:req.body.roll
 	};
-	// let que=`create table main (name varchar(20),roll varchar(20), email varchar(30), password varchar(200), phone float(10,0), hostel varchar(25),room varchar(20))`;
-	// 	con.query(que,function(qerr,qres){
-	// 		if(qerr)
-	// 		{
-	// 			console.log(qerr);
-	// 		}
-	// 	});
-	const SALT_FACTOR = 5;
-	bcrypt.genSalt(SALT_FACTOR,function(serr,salt){
-		if(serr){
-		    console.log(serr);
-		}
-		bcrypt.hash(password,salt,function(herr,hash){
-			if(herr){
-	    		console.log(herr);
+	console.log(req.files.fileupload);
+	 if (!req.files)
+           return res.status(400).send('No files were uploaded.');
+    var file = req.files.fileupload;
+     var img_name=file.name;
+    console.log(img_name);
+    if(file.mimetype == "image/jpeg" ||file.mimetype == "image/png"||file.mimetype == "image/gif" ){
+                                 
+              file.mv('public/images/upload_images/'+file.name, function(err) {
+                             
+               if (err)
+                 return res.status(500).send(err);
+               const SALT_FACTOR = 5;
+		bcrypt.genSalt(SALT_FACTOR,function(serr,salt){
+			if(serr){
+			    console.log(serr);
 			}
+			bcrypt.hash(password,salt,function(herr,hash){
+				if(herr){
+		    		console.log(herr);
+				}
 
 		
 
-		que = `insert into main (name,roll,email,password,phone,hostel,room,points) values('${name}','${roll}','${email}','${hash}','${phone}','${hostel}','${room}',0)`;
+		que = `insert into main (name,roll,email,password,phone,hostel,room,points,image) values('${name}','${roll}','${email}','${hash}','${phone}','${hostel}','${room}',0,'${img_name}')`;
 
 		con.query(que,function(qerr,qres){
 			if(qerr)
@@ -46,10 +53,22 @@ exports.signup = function(req,res)
 			}
 		req.session.user = user;
 		res.redirect('/request');
-	});
+		});
 
-	});
-});
+		});
+		});
+          });
+      }
+		
+	
+	// let que=`create table main (name varchar(20),roll varchar(20), email varchar(30), password varchar(200), phone float(10,0), hostel varchar(25),room varchar(20))`;
+	// 	con.query(que,function(qerr,qres){
+	// 		if(qerr)
+	// 		{
+	// 			console.log(qerr);
+	// 		}
+	// 	});
+	
 }
 exports.login= function(req,res){
 	var roll = req.body.roll;
@@ -119,6 +138,7 @@ exports.profile = function(req,res){
 		con.query(que,function(err,results,fields){
 			if(err)
 			throw err;
+		console.log(results[0]);
 			res.render('profile',{
 			    name:results[0].name,
 				roll:results[0].roll,
@@ -126,7 +146,9 @@ exports.profile = function(req,res){
 				phone:results[0].phone,
 				hostel:results[0].hostel,
 				room:results[0].room,
-				points:results[0].points
+				points:results[0].points,
+				image:results[0].image
+
 			});
 		});
 	}
@@ -267,7 +289,7 @@ exports.feedback = function(req,res){
 		service : 'gmail',
 		auth: {
 			user: 'abhijeetmathur786@gmail.com',
-			pass: 'Anujay786@'
+			pass: '***********'
 		},
 		tls: {
         	rejectUnauthorized: false

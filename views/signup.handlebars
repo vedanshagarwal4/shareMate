@@ -284,13 +284,12 @@ li.twitter:hover {
 <div class="container2">
   <div class="form-background">
   <h1 class="signup">Sign Up</h1>
- <form name="f" method="post" action="/new">
+ <form name="f" method="post" action="/new" enctype="multipart/form-data">
   <input type="text" name="name" placeholder="Name" required>
   <br>
   <input type="text" name="roll" placeholder="Roll Number" id ="roll" required>
   <br>
   <input type="email" name="email" placeholder="Email"  autocomplete="off" id ="emailV" required>
-  <p class="warning" id="eventWar"></p><br>
   <br>
   <input type="password" name="password" placeholder="Password" required>
   <br>
@@ -299,6 +298,7 @@ li.twitter:hover {
   <input type="text" name="hostel" placeholder="Hostel Name" required>
   <br>
   <input type="text" name="room" placeholder="Room Number" required>
+  <input type="file" name ="fileupload" required  >
   <input type="submit" value="Sign Up" id='submit'>
   
 </div>
