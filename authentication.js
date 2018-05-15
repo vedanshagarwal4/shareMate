@@ -246,8 +246,8 @@ exports.invite = function(req,res){
 	var sender = mailer.createTransport({
 		service : 'gmail',
 		auth: {
-			user: 'abhijeetmathur786@gmail.com',
-			pass: 'Anujay786@'
+			user: 'sharemate.in@gmail.com',
+			pass: 'sharematespartans'
 		},
 		tls: {
         	rejectUnauthorized: false
@@ -263,7 +263,7 @@ var maillist = [
 maillist.forEach(function (to, i , array) {
 
 var mail = {
-		from : 'abhijeetmathur786@gmail.com',
+		from : 'sharemate.in@gmail.com',
 		// to : req.body.email,
 		subject : `Invitation to see requests`,
 		text : `Your have a new invitation`
@@ -288,8 +288,8 @@ exports.feedback = function(req,res){
 	var sender = mailer.createTransport({
 		service : 'gmail',
 		auth: {
-			user: 'abhijeetmathur786@gmail.com',
-			pass: '***********'
+			user: 'sharemate.in@gmail.com',
+			pass: 'sharematespartans'
 		},
 		tls: {
         	rejectUnauthorized: false
@@ -302,7 +302,7 @@ exports.feedback = function(req,res){
         var usermail = results[0].email;
         console.log(usermail);
         var mail = {
-		from : 'abhijeetmathur786@gmail.com',
+		from : 'sharemate.in@gmail.com',
 		to : usermail,
 		subject : `Response`,
 		text : `Your request is approved`
