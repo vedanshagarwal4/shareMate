@@ -35,24 +35,29 @@ h1 {
 </head>
  
 <body>
-
-<div id="outer">
-    <div id="blueDiv">
-      <br>
-       <h1>{{name}}</h1><br>
-       <!-- <i class="fa fa-user-circle fa-5x" aria-hidden="true"> --><div ><img src = "images/upload_images/{{image}}" style="height:200px;width:200px;"></img></div>
-       <br><br>
-       <div style="line-height:1.2;">
-        {{email}}<br>
-        Roll No : {{roll}}<br>
-        Phone : {{phone}}<br>
-        Hostel : {{hostel}}<br>
-        Room : {{room}}<br>
-        Points : {{points}}<br>
-       </div>
+    <center><h2>Profile</h2></center>
+    <div class="division">
+        <div>
+            <div id="image_holder" class="image_holder">
+            <div class="card">
+                <img src = "images/upload_images/{{image}}" style="height:320px;width:300px;"></img>
+                <!-- <input id ="image_upload" type="file" accept="image/*">  -->
+                {{!-- <h2>{{name}}</h2> --}}
+            </div>
+            </div>
+        </div>
+        <div style="line-height:1.2;">
+           <div class="card" style="height: 320px;width:500px">
+                Name: {{name}}<br> <br> 
+                Email: {{email}}<br> <br>
+                Roll No: {{roll}}<br> <br>
+                Phone: {{phone}}<br> <br>
+                Hostel: {{hostel}}<br> <br>
+                Room: {{room}}<br> <br>
+                Points: {{points}}<br> <br>
+           </div>  
+        </div>
     </div>
-    </div>
-
 </body>
  
 </html>
