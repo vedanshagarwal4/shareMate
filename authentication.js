@@ -64,6 +64,7 @@ exports.login= function(req,res){
 	var roll = req.body.roll;
 	var email= req.body.email;
 	var password =  req.body.password;
+	console.log(email);
 	var user = {
 		email:req.body.email,
 		roll:req.body.roll
@@ -75,28 +76,25 @@ exports.login= function(req,res){
 	    console.log(error);
 	}
 	else{
-
+		console.log(results);
 		if(results.length >0){
 			  bcrypt.compare(password, results[0].password, function(err, doesMatch){
 				if (doesMatch){
 					user.name = results[0].name;
+					req.session.user = user;
+					console.log("Success");
+					res.redirect('/request');
 				}
 				else{
 					res.redirect('/login?err=Enter valid Password');
 				}
-			});
+			});	
 		}
 		else{
 			res.redirect('/login?err=Enter valid Email');
 		}
-		req.session.user = user;
-	console.log("Success");
-	res.redirect('request')
-	
-	// console.log(currentUser);
-
-}
-});
+	}
+	});
 }
 
 exports.logout=function(req,res){
