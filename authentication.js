@@ -59,16 +59,6 @@ exports.signup = function(req,res)
 		});
           });
       }
-		
-	
-	// let que=`create table main (name varchar(20),roll varchar(20), email varchar(30), password varchar(200), phone float(10,0), hostel varchar(25),room varchar(20))`;
-	// 	con.query(que,function(qerr,qres){
-	// 		if(qerr)
-	// 		{
-	// 			console.log(qerr);
-	// 		}
-	// 	});
-	
 }
 exports.login= function(req,res){
 	var roll = req.body.roll;
@@ -84,15 +74,12 @@ exports.login= function(req,res){
 	if (error) {
 	    console.log(error);
 	}
-
 	else{
 
 		if(results.length >0){
 			  bcrypt.compare(password, results[0].password, function(err, doesMatch){
 				if (doesMatch){
 					user.name = results[0].name;
-					// user.roll = results[0].roll;
-					
 				}
 				else{
 					res.redirect('/login?err=Enter valid Password');
@@ -289,7 +276,7 @@ exports.feedback = function(req,res){
 		service : 'gmail',
 		auth: {
 			user: 'abhijeetmathur786@gmail.com',
-			pass: '***********'
+			pass: 'Anujay786@'
 		},
 		tls: {
         	rejectUnauthorized: false

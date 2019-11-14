@@ -1,107 +1,24 @@
-<style>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
 
-.heading1{
-  color: #fff;
-  margin-top : 15%; 
-  font-size: 50px;
-  font-family: 'Chicle', cursive;
-}
+	<script type="text/javascript">
+		
+		function check()
+		{
+			if(!(document.f.name.value) || !(document.f.roll.value) || !(document.f.email.value) || !(document.f.password.value) || !(document.f.phone.value) || !(document.f.hostel.value) || !(document.f.room.value))
+			{
+				alert('Fill all the credentials !');
+			}
 
-/*div.main{
-  border-style: solid;
-  border-width: 4px;
-}*/
+		}
 
-.container1 {
-  position: absolute;
-  top : 45%;
-  left: 47%;
-  margin-left: -65px;
-  margin-top: -20px;
-  width: 130px;
-  height: 20px;
-  text-align: center;
-}
+	</script>
 
-button {
-  outline: none;
-  height: 80px;
-  text-align: center;
-  width: 230px;
-  border-radius: 50px;
-  background: #fff;
-  border: 4px solid #24f2a6;
-  color: #24f2a6;
-  letter-spacing: 1px;
-  text-shadow: 0;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-button:hover {
-  color: white;
-  background: #24f2a6;
-  border-color: #fff;
-}
-button:active {
-  letter-spacing: 2px;
-}
-button:after {
-  content: "";
-}
-
-.onclic {
-  width: 40px;
-  border-color: #bbbbbb;
-  border-width: 3px;
-  font-size: 0;
-  border-left-color: #1ECD97;
-  -webkit-animation: rotating 2s 0.25s linear infinite;
-          animation: rotating 2s 0.25s linear infinite;
-}
-.onclic:after {
-  content: "";
-}
-.onclic:hover {
-  color: #1ECD97;
-  background: white;
-}
-
-.validate {
-  font-size: 13px;
-  color: white;
-  background: #1ECD97;
-}
-.validate:after {
-  font-family: 'FontAwesome';
-  content: "\f00c";
-}
-
-@-webkit-keyframes rotating {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-@keyframes rotating {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
+	<style type="text/css">
+		
+		@import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import url("https://fonts.googleapis.com/css?family=Lato");
 * {
   margin: 0;
@@ -114,11 +31,18 @@ button:after {
   /* Opera/IE 8+ */
 }
 
-
-
-.container2 {
+html,
+body {
   height: 100%;
-  margin-top: 12%;
+}
+
+body {
+  /*background: linear-gradient(rgba(220, 234, 237, 0.7), rgba(220, 234, 237, 0.7)), url(http://res.cloudinary.com/jenelle-miller/image/upload/v1518619522/doodles_cuau2z.png) repeat;*/
+  background-color: #23d191;
+}
+
+.container {
+  height: 100%;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -126,7 +50,7 @@ button:after {
   justify-content: center;
 }
 
-.signup {
+h1 {
   font-family: "Montserrat", "Arial", sans-serif;
   color: #23d191;
   text-align: center;
@@ -265,10 +189,8 @@ li.twitter:hover {
 
 .login {
   text-align: center;
-  
   margin-top: 24px;
   font-size: .8rem;
-  margin-bottom: 2%;
   font-family: "Montserrat", "Arial", sans-serif;
 }
 .login a {
@@ -279,31 +201,47 @@ li.twitter:hover {
 }
 .login a:hover {
   color: #8461c3;
-}</style>
-<body style="background-color :  #24f2a6">
-<div class="container2">
+}
+
+
+	</style>
+</head>
+<body>
+
+
+<div class="container">
   <div class="form-background">
-  <h1 class="signup">Sign In</h1>
- <form method="post" action="/old">
-   <input type="text" name="roll" placeholder="Roll Number" required>
+  <h1>Sign Up</h1>
+ <form name="f" method="post">
+  <input type="text" name="name" placeholder="Name" required>
+  <br>
+  <input type="text" name="roll" placeholder="Roll Number" required>
   <br>
   <input type="email" name="email" placeholder="Email" required>
   <br>
   <input type="password" name="password" placeholder="Password" required>
-  <br><br>
-  <input type="submit" value="Sign In">
+  <br>
+  <input type="number" name="phone" placeholder="Contact Number" required>
+  <br>
+  <input type="text" name="hostel" placeholder="Hostel Name" required>
+  <br>
+  <input type="text" name="room" placeholder="Room Number" required>
+  <input type="submit" value="Sign Up" onclick="document.location.href='profile.html'">
 </form>
+  <!-- <p class="sign-up-divider">or sign up with</p>
+ <div class="social-media">
+   <ul class="social-media-icons">
+     <li class="google"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+     <li class="facebook"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+     <li class="twitter"><a href="#"><i class="fab fa-twitter"></i></a></li>
+   </ul>
+ </div>  -->
 </div>
+<div class="login">
+  <p>already have an account?<a href="test1.html">login</a></p>
+</div>
+</div>
+
+
 </body>
-</div>
-<script type="text/javascript">
-      
-         function check()
-         {
-            if( !(document.f.email.value) || !(document.f.password.value) ){
-                           alert('All the fields are mandatory !');
-            }
-         }
-
-
-</script>
+</html>

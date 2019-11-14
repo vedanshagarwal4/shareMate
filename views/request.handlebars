@@ -3,8 +3,7 @@
         text-decoration:underline;
     }
     .link{
-        font-size:25px;
-        margin-right:9%;
+        margin-right:19%;
     }
 </style>
 <div class="main-body">
@@ -13,8 +12,10 @@
 		<div class="page">
 			<div>
 				<div class="tab" style="float: right;" onclick="navigation()"><i class="fa fa-bars"></i></div>
-				<div><h1>shareMate <i class="fa fa-users" aria-hidden="true"></i></h1></div>
-				
+				<div class="button" style="text-align:center;width:10%;margin-right:10%;float:right" onclick="openModal('request')">
+					Add Request
+				</div>
+				<div><h3>shareMate <i class="fa fa-users" aria-hidden="true"></i></h3></div>
 			</div>
 			<div id="navmenu" class="menu">
 			    <a href ="/invite">
@@ -43,14 +44,6 @@
 					</div>
 				</a>
 			</div>
-
-
-			<div>
-				<div class="button" style="text-align:center;width:30%;margin-right:0%;float:right" onclick="openModal('request')">
-					Add Request
-				</div>
-				<br><br>
-			</div>
 			<div class="modal" id="request">
 	             <div class="modal-content">
 		           <div class="close" onclick="closeModal('request')">&times;</div>
@@ -72,23 +65,22 @@
 				{{#each works}}
 					<div class="list-ele full">
 					    <h6 style="float:right;margin-right:10%">Roll no. : {{roll}}</h6>
-						<h6>Request Id : {{id}}</h6>
-						<a href="/profile/{{roll}}" class="link" style="float:right">View Profile</a>
-						<h5>Description : {{description}}</h5>
-						<form method="post" action="/deleterequest" style="float:right;margin-right:3%;padding-right:5px">
-						<input type="text"  name ="deletevalue" value={{id}} style="display:none">
-						<input type="submit" value="&#10008" class="button"  style="width:35%;padding-right:30px">
+						<h6><a href="/profile/{{roll}}" class="link" style="float:right">View Profile</a></h6>
+						<h6 style=";margin-left:10%">Request Id : {{id}}</h6>
+						<h6 style=";margin-left:10%">Description : {{description}}</h6>
+						<form method="post" action="/deleterequest" style="float:right;margin-right:7%">
+							<input type="text"  name ="deletevalue" value={{id}} style="display:none">
+							<input type="submit" value="&#10008" class="button"  style="width:35%;padding-right:30px">
 						</form>
-						<form method="post" action="/acceptrequest" style="margin-left:0px;float:left">
-						<input type="text" name ="acceptvalue" value={{id}} style="display:none">
-						<input type="text" name ="original" value={{roll}} style="display:none">
+						<form method="post" action="/acceptrequest" style="margin-left:9%;float:left">
+							<input type="text" name ="acceptvalue" value={{id}} style="display:none">
+							<input type="text" name ="original" value={{roll}} style="display:none">
 						<b><input type="submit" value="&#10004" class="button"   style="width:35%;padding-right:30px"></b>
 						</form>
 						
 						<br>
 					</div>
 					<br>
-					<hr>
 				{{/each}}
 			{{else}}
 				<div style="padding-top: 20px;text-align: center;">

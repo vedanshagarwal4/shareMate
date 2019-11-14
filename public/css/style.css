@@ -32,7 +32,7 @@ h2,h1,h3,h4{
 }
 
 .tab{
-  padding: 0px 20px;
+  padding: 5px 20px;
   cursor: pointer;
   line-height: 1.0;
   max-width: 5%;
@@ -42,13 +42,13 @@ h2,h1,h3,h4{
   display: none;
   z-index: 20;
   position: absolute;
-  max-width: 70%;
-    width: 29%;
-    text-align: center;
-  min-width: 15%;
+  width: 10%;
+  text-align: center;
+  min-width: 5%;
   right: 11%;
-  top: 13%;
+  top: 12%;
   background-color: rgba(36,34,31,0.93);
+  font-size: 15px;
 }
 
 .form-container{
@@ -96,6 +96,7 @@ a{
   border-radius: 5px;
   cursor: pointer;
   display: inline-block;
+  font-size: 15px;
 }
 
 .button:hover{
@@ -174,9 +175,10 @@ a{
 
 .list{
   margin: 10px 0px;
+  margin-right: 100px;
   border-top: 0.5px solid #A5A6A7;
   width: 100%;
-  padding:5px 0px;
+  padding:5px 5px;
 }
 
 .list-ele{
@@ -186,15 +188,15 @@ a{
   border-radius: 5px;
   color: black;
   padding: 5px 10px;
-  margin: 4px 1%;
+  background: rgb(255, 255, 254);
+  /* margin: 4px 1%; */
   transition: 0.5s;
 }
 
 .full{
-  min-width: 100%;
   display: block;
-  border: none;
-  border-radius: 0px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 .warning{
@@ -280,17 +282,18 @@ button{
 .close{
   position: absolute;
   top: 5px;
-  right: 5px;
-  font-size: 25px;
+  right: 10px;
+  font-size: 30px;
   border: 0;
   padding: 0px 5px;
-  background-color: white;
+  /* background-color: white; */
   transition: 0.3s;
   cursor: pointer;
-  color: black;
+  color: white;
 }
 .close:hover{
-  background-color: #bb1616;
+  background-color: #24f2a6;
+  border-radius: 5px;
   color: white;
 }
 
@@ -315,16 +318,17 @@ button{
 
 .modal-content{
   width: 40%;
-  min-height: 300px;
+  min-height: 100px;
   max-height: 500px;
   box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12); 
-  background-color:rgba(67, 68, 70,0.9);
-  color: white;
-  overflow-y:scroll; 
+  background-color:rgba(21, 23, 27, 0.9);
+  color: white; 
   padding:10px;
   position:fixed;
   top:25%;
   left:30%;
+  font-size: 15px;
+  border-radius: 10px;
   animation:zoom 0.5s;
   -webkit-animation:zoom 0.5s;
   -webkit-animation:zoom 0.5s;
@@ -367,7 +371,8 @@ button{
   font-size: 20px;
 }
 .modal-body input{
-  width:80%;
+  width:78%;
+  height: 50px;
 }
 .modal-body .button{
   width:30%;
@@ -455,7 +460,7 @@ heading{
 
 .division{
   display: flex;
-  margin: 20px 0px;
+  margin: 20px 80px;
   overflow-x: hidden;
 }
 
@@ -472,6 +477,7 @@ heading{
 .card{
   padding: 20px 30px;
   margin: 40px;
+  font-size: 20px;
   -webkit-box-shadow: 4px 9px 20px 2px rgba(176,169,176,0.98);
   -moz-box-shadow: 4px 9px 20px 2px rgba(176,169,176,0.98);
   box-shadow: 4px 9px 20px 2px rgba(176,169,176,0.98);
