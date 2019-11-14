@@ -52,13 +52,13 @@ else{
 exports.leaderboard=function(req,res){
 	if(req.session && req.session.user){
 		let que=`select * from main order by points desc`;
-		con.query(que,function(err,results,feilds){
+		con.query(que,function(err,results,fields){
 			if(err){
 				console.log(err);
 			}
 			res.render('leaderboard',{
 				board:results,
-				currentUser:results[0].roll
+				currentUser:req.session.user.roll
 
 			});
 
