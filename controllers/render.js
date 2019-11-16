@@ -68,3 +68,26 @@ exports.leaderboard=function(req,res){
 		res.redirect('/request');
 	}	
 }	
+
+exports.pendingRequests = function(req,res){
+	if(req.session && req.session.user){
+	var roll = req.session.user.roll;
+	var aworks = {} ;
+	que = `select * from requests where roll = '${roll}'`;
+	
+	con.query(que,function(err,results,fields){
+				if(err)
+				throw err;
+                aworks = results;
+       res.render('pendingRequests',{
+		works:aworks,
+		currentUser:req.session.user.roll
+	});
+		});
+
+}
+else{
+		req.session.destroy();
+		res.redirect('/');
+	}
+}

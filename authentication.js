@@ -328,3 +328,50 @@ exports.feedback = function(req,res){
 // 		}
 // 	});
 // }
+
+
+exports.pendingRequests =function(req,res){
+	var id = req.body.acceptvalue;
+	var or_roll=req.body.original;
+	var acceptor = req.session.user.roll;
+	if(or_roll!=acceptor){
+	let que =`select * from requests where id ='${id}'`;
+     con.query(que,function(err,results,fields){
+			if(err)
+			throw err;
+		var generator = results[0].roll;
+		var description = results[0].description;
+		que = `insert into accepted (acceptor,id,generator,description) values ('${acceptor}','${id}','${generator}','${description}')`;
+		con.query(que,function(err,results,fields){
+				if(err)
+				throw err;
+		});
+		que = `delete from requests where id='${id}'`;
+		con.query(que,function(err,results,fields){
+				if(err)
+				throw err;
+		});
+		
+		// alert('Cannot accept your own request');
+		res.redirect('/pendingRequests');
+
+	});
+	
+   }
+   else{
+   	res.redirect('/pendingRequests');
+   }
+}
+
+exports.editrequest=function(req,res){
+	var id = req.body.editvalue;
+	var description = req.body.description;
+    var curUser = req.session.user.roll;
+	que  = `update requests set description = '${description}' where id = '${id}'`;
+	con.query(que,function(qerr,qres){
+		if(qerr){
+			console.log(qerr);
+		}
+	});
+	res.redirect(`/pendingRequests/${curUser}`);
+}
