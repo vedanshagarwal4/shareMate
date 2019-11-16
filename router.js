@@ -7,7 +7,7 @@ const acceptRouter = express.Router();
 const feedRouter = express.Router();
 const Render = require('./controllers/render');
 appRouter.get("/",(req,res)=>{
-	res.render("index");
+	res.render("index1");
 
 });
 appRouter.get("/signup",(req,res)=>{
