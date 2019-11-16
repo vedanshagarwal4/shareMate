@@ -3,21 +3,41 @@
         text-decoration:underline;
     }
     .link{
-        font-size:25px;
-        margin-right:9%;
+        margin-right:19%;
     }
 </style>
 <div class="main-body">
-
-<div class="flexed">
+	<div class="flexed">
 		<div class="page">
 			<div>
-				<div><h1>shareMate <i class="fa fa-users" aria-hidden="true"></i></h1></div>
-				
+				<div class="tab" style="float: right;" onclick="navigation()"><img src="images/bars.png" alt="alternative" height="30px"></div>
+				<div style="float:right;margin-top:50px;margin-right:10px">Accepted requests</div>
+				<div><img src="images/logo1.png" alt="alternative" height="150px"></div>
 			</div>
-			<div style="float:right">Accepted requests</div>
-<br>
-			<div>
+			<div id="navmenu" class="menu">
+				<a href="/request">
+				    <div class="menu-ele">
+						Home
+					</div>
+				</a>
+				<a href="/profile/{{currentUser}}">
+					<div class="menu-ele">
+						Your Profile
+					</div>
+				</a>
+				<a href="/leaderboard">
+				    <div class="menu-ele">
+						LeaderBoard
+					</div>
+				</a>
+				<a href="/logout">
+					<div class="menu-ele">
+						Logout
+					</div>
+				</a>
+			</div>
+			<br>
+		<div>
 				
 		<div class="list">
 			<!--works-->
@@ -25,22 +45,20 @@
 				{{#each works}}
 					<div class="list-ele full">
 					    <h6 style="float:right;margin-right:10%">Request Id : {{id}}</h6>
-						<h6>Accepted by : {{acceptor}}</h6>
-<!--						<h3>{{generator}}</h3>-->
-                    <a href="/profile/{{acceptor}}" style="float:right" class="link">View profile</a>
-						<h5>Description : {{description}}</h5>
-						
-						<form method="post" action="/reopen" style="float:right;margin-right:3%;padding-right:5px">
-						<input type="text" name ="accvalue" value={{id}} style="display:none">
-						<input type="submit" value="&#10008" class="button">
+                    	<h6><a href="/profile/{{roll}}" class="link" style="float:right">View Profile</a></h6>
+						<h6 style=";margin-left:10%">Accepted by : {{acceptor}}</h6>
+						<h6 style=";margin-left:10%">Description : {{description}}</h6>
+						<form method="post" action="/reopen" style="float:right;margin-right:7%">
+							<input type="text" name ="accvalue" value={{id}} style="display:none">
+							<input type="submit" value="&#10008" class="button" style="width:35%;padding-right:30px">
 						</form>
-						<form method="post" action="/close" style="margin-left:0px;float:left">
-						<input type="text"  name ="delvalue" value={{id}} style="display:none">
-						<input type="submit" value="&#10004" class="button">
+						<form method="post" action="/close" style="margin-left:9%;float:left">
+							<input type="text"  name ="delvalue" value={{id}} style="display:none">
+							<input type="submit" value="&#10004" class="button" style="width:35%;padding-right:30px">
 						</form>
 						<br>
 					</div>
-				<hr>
+					<br>
 				{{/each}}
 			{{else}}
 				<div style="padding-top: 20px;text-align: center;">
