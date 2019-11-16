@@ -113,7 +113,7 @@ exports.request=function(req,res){
 			console.log(qerr);
 		}
 	});
-	res.redirect('/request');
+	res.redirect(`/pendingRequests/${roll}`);
 }
 exports.profile = function(req,res){
 	if(req.session && req.session.user){
@@ -146,7 +146,7 @@ exports.deleterequest = function(req,res){
 			if(err)
 			throw err;
 	});
-	res.redirect('/request');
+	res.redirect(`/pendingRequests/${roll}`);
 }
 exports.acceptrequest =function(req,res){
 	var id = req.body.acceptvalue;
@@ -328,3 +328,17 @@ exports.feedback = function(req,res){
 // 		}
 // 	});
 // }
+
+
+exports.editrequest=function(req,res){
+	var id = req.body.editvalue;
+	var description = req.body.description;
+    var curUser = req.session.user.roll;
+	que  = `update requests set description = '${description}' where id = '${id}'`;
+	con.query(que,function(qerr,qres){
+		if(qerr){
+			console.log(qerr);
+		}
+	});
+	res.redirect(`/pendingRequests/${curUser}`);
+}

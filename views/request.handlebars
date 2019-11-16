@@ -22,6 +22,11 @@
 						Your Profile
 					</div>
 				</a>
+				<a href="/pendingRequests/{{currentUser}}">
+				    <div class="menu-ele">
+						My Requests
+					</div>
+				</a>
 				<a href="/accepted/{{currentUser}}">
 				    <div class="menu-ele">
 						Accepted Requests
@@ -63,11 +68,7 @@
 						<h6><a href="/profile/{{roll}}" class="link" style="float:right">View Profile</a></h6>
 						<h6 style=";margin-left:10%">Request Id : {{id}}</h6>
 						<h6 style=";margin-left:10%">Description : {{description}}</h6>
-						<form method="post" action="/deleterequest" style="float:right;margin-right:7%">
-							<input type="text"  name ="deletevalue" value={{id}} style="display:none">
-							<input type="submit" value="&#10008" class="button"  style="width:35%;padding-right:30px">
-						</form>
-						<form method="post" action="/acceptrequest" style="margin-left:9%;float:left">
+						<form method="post" action="/acceptrequest" style="float:right;margin-right:7%">
 							<input type="text" name ="acceptvalue" value={{id}} style="display:none">
 							<input type="text" name ="original" value={{roll}} style="display:none">
 						<b><input type="submit" value="&#10004" class="button"   style="width:35%;padding-right:30px"></b>
@@ -86,4 +87,3 @@
 		</div>
 </div>
 </div>
-
