@@ -38,7 +38,8 @@ exports.acceptedRequests = function(req,res){
 				throw err;
                 aworks = results;
        res.render('accepted',{
-		works:aworks
+		works:aworks,
+		currentUser: req.session.user.roll
 		
 	});
 		});
