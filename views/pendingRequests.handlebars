@@ -1,0 +1,107 @@
+<style>
+    .link:hover{
+        text-decoration:underline;
+    }
+    .link{
+        margin-right:19%;
+    }
+</style>
+<div class="main-body">
+
+<div class="flexed">
+		<div class="page">
+			<div>
+				<div class="tab" style="float: right;" onclick="navigation()"><img src="images/bars.png" alt="alternative" height="30px"></div>
+				<div class="button" style="float:right;margin-top:50px;margin-right:100px" onclick="openModal('request')">
+					Add Request
+				</div>
+				<div><img src="images/logo1.png" alt="alternative" height="150px"></div>
+			</div>
+			<div id="navmenu" class="menu">
+				<a href="/profile/{{currentUser}}">
+					<div class="menu-ele">
+						Your Profile
+					</div>
+				</a>
+				<a href="/pendingRequests/{{currentUser}}">
+				    <div class="menu-ele">
+						My Requests
+					</div>
+				</a>
+				<a href="/accepted/{{currentUser}}">
+				    <div class="menu-ele">
+						Accepted Requests
+					</div>
+				</a>
+				<a href="/leaderboard">
+				    <div class="menu-ele">
+						LeaderBoard
+					</div>
+				</a>
+				<a href="/logout">
+					<div class="menu-ele">
+						Logout
+					</div>
+				</a>
+			</div>
+			<div class="modal" id="request">
+	             <div class="modal-content">
+		           <div class="close" onclick="closeModal('request')">&times;</div>
+		              	<div class="modal-header">
+			                <center><h3 style="color: azure;margin-top:10px">Create Request</h3></center>
+							<hr style="color:azure">
+						</div>
+				   <div class="modal-body">
+						<form method="post" action="/addrequest">
+<!--							<label for="description">Request</label><br>-->
+							<input type="text" name="description" placeholder="Your request" style="margin-left:10%"><br><br>
+							<input type="submit" value="Request" class="button" style="margin-left:35%"><br><br>
+						</form>
+				   </div>
+				  </div>
+            </div>
+			<div class="list">
+			<!--works-->
+			{{#if works}}
+				{{#each works}}
+					<div class="list-ele full">
+					    <h6 style="float:right;margin-right:10%">Roll no. : {{roll}}</h6>
+						<h6 style=";margin-left:10%">Request Id : {{id}}</h6>
+						<h6 style=";margin-left:10%">Description : {{description}}</h6>
+						<form method="post" action="/deleterequest" style="float:right;margin-right:7%">
+							<input type="text"  name ="deletevalue" value={{id}} style="display:none">
+							<input type="submit" value="&#10008" class="button"  style="width:35%;padding-right:30px">
+                        </form>
+                        <div class="button" style="margin-left:9%;float:left" onclick="openModal('editrequest{{id}}')">
+					       &#9997;
+				        </div>
+						<br>
+					</div>
+					<div class="modal" id="editrequest{{id}}">
+	             <div class="modal-content">
+		           <div class="close" onclick="closeModal('editrequest{{id}}')">&times;</div>
+		              	<div class="modal-header">
+			                <center><h3 style="color: azure;margin-top:10px">Edit Request</h3></center>
+							<hr style="color:azure">
+						</div>
+				   <div class="modal-body">
+						<form method="post" action="/editrequest">
+<!--							<label for="description">Request</label><br>-->
+                            <input type="text"  name ="editvalue" value={{id}} style="display:none">
+							<input type="text" name="description" value={{description}} style="margin-left:10%"><br><br>
+							<input type="submit" value="Edit" class="button" style="margin-left:35%"><br><br>
+						</form>
+				   </div>
+				  </div>
+            </div>
+					<br>
+				{{/each}}
+			{{else}}
+				<div style="padding-top: 20px;text-align: center;">
+					No request is added yet.
+				</div>
+			{{/if}}
+			</div>
+		</div>
+</div>
+</div>

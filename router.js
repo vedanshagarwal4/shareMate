@@ -5,6 +5,7 @@ const appRouter = express.Router();
 const profileRouter = express.Router();
 const acceptRouter = express.Router();
 const feedRouter = express.Router();
+const pendingRequestRouter = express.Router();
 const Render = require('./controllers/render');
 appRouter.get("/",(req,res)=>{
 	res.render("index1");
@@ -41,4 +42,13 @@ appRouter.get('/leaderboard',Render.leaderboard);
 appRouter.use('/feedback',feedRouter);
 feedRouter.use(express.static(__dirname + '/public'));
 feedRouter.get('/:roll',Authentication.feedback);
+
+appRouter.use('/pendingRequests',pendingRequestRouter);
+pendingRequestRouter.use(express.static(__dirname + '/public'));
+pendingRequestRouter.get('/:currentUser',Render.pendingRequests);
+
+appRouter.post('/editrequest',Authentication.editrequest);
+
+
+
 module.exports = appRouter;
