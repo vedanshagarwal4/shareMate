@@ -74,7 +74,7 @@ exports.pendingRequests = function(req,res){
 	if(req.session && req.session.user){
 	var roll = req.session.user.roll;
 	var aworks = {} ;
-	que = `select * from requests where roll = '${roll}'`;
+	que = `select * from requests where roll = '${roll}' order by id desc`;
 	
 	con.query(que,function(err,results,fields){
 				if(err)

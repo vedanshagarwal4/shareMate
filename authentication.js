@@ -113,7 +113,7 @@ exports.request=function(req,res){
 			console.log(qerr);
 		}
 	});
-	res.redirect('/request');
+	res.redirect(`/pendingRequests/${roll}`);
 }
 exports.profile = function(req,res){
 	if(req.session && req.session.user){
@@ -146,7 +146,7 @@ exports.deleterequest = function(req,res){
 			if(err)
 			throw err;
 	});
-	res.redirect('/request');
+	res.redirect(`/pendingRequests/${roll}`);
 }
 exports.acceptrequest =function(req,res){
 	var id = req.body.acceptvalue;
@@ -329,39 +329,6 @@ exports.feedback = function(req,res){
 // 	});
 // }
 
-
-exports.pendingRequests =function(req,res){
-	var id = req.body.acceptvalue;
-	var or_roll=req.body.original;
-	var acceptor = req.session.user.roll;
-	if(or_roll!=acceptor){
-	let que =`select * from requests where id ='${id}'`;
-     con.query(que,function(err,results,fields){
-			if(err)
-			throw err;
-		var generator = results[0].roll;
-		var description = results[0].description;
-		que = `insert into accepted (acceptor,id,generator,description) values ('${acceptor}','${id}','${generator}','${description}')`;
-		con.query(que,function(err,results,fields){
-				if(err)
-				throw err;
-		});
-		que = `delete from requests where id='${id}'`;
-		con.query(que,function(err,results,fields){
-				if(err)
-				throw err;
-		});
-		
-		// alert('Cannot accept your own request');
-		res.redirect('/pendingRequests');
-
-	});
-	
-   }
-   else{
-   	res.redirect('/pendingRequests');
-   }
-}
 
 exports.editrequest=function(req,res){
 	var id = req.body.editvalue;

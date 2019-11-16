@@ -18,14 +18,14 @@
 				<div><img src="images/logo1.png" alt="alternative" height="150px"></div>
 			</div>
 			<div id="navmenu" class="menu">
+				<a href="/request">
+				    <div class="menu-ele">
+						Home
+					</div>
+				</a>
 				<a href="/profile/{{currentUser}}">
 					<div class="menu-ele">
 						Your Profile
-					</div>
-				</a>
-				<a href="/pendingRequests/{{currentUser}}">
-				    <div class="menu-ele">
-						My Requests
 					</div>
 				</a>
 				<a href="/accepted/{{currentUser}}">
@@ -72,7 +72,7 @@
 							<input type="text"  name ="deletevalue" value={{id}} style="display:none">
 							<input type="submit" value="&#10008" class="button"  style="width:35%;padding-right:30px">
                         </form>
-                        <div class="button" style="margin-left:9%;float:left" onclick="openModal('editrequest{{id}}')">
+                        <div class="button" style="margin-left:9%;float:right" onclick="openModal('editrequest{{id}}')">
 					       &#9997;
 				        </div>
 						<br>
