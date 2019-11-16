@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
- 
+<html> 
 <head>
 <title>Centering Content</title>
 <style>
-body {
-    background-color: #F3F3F3;
-    font-family:Quicksand, sans-serif;
-    font-size:30px;
-}
 #outer {
     height:100vh;
   display: flex;
@@ -35,29 +28,56 @@ h1 {
 </head>
  
 <body>
-    <center><h2>Profile</h2></center>
-    <div class="division">
-        <div>
-            <div id="image_holder" class="image_holder">
-            <div class="card">
-                <img src = "images/upload_images/{{image}}" style="height:320px;width:300px;"></img>
-                <!-- <input id ="image_upload" type="file" accept="image/*">  -->
-                {{!-- <h2>{{name}}</h2> --}}
+    <div class="main-body">
+            <div class="page">
+                <div>
+                    <div class="tab" style="float: right;" onclick="navigation()"><img src="images/bars.png" alt="alternative" height="30px"></div>
+                    <div style="float:right;margin-top:50px;margin-right:10px">
+                        Profile
+                    </div>
+                    <div><img src="images/logo1.png" alt="alternative" height="150px"></div>
+			    </div>
+                <div id="navmenu" class="menu">
+                    <a href="/request">
+                        <div class="menu-ele">
+                            Home
+                        </div>
+                    </a>
+                    <a href="/leaderboard">
+                        <div class="menu-ele">
+                            LeaderBoard
+                        </div>
+                    </a>
+                    <a href="/logout">
+                        <div class="menu-ele">
+                            Logout
+                        </div>
+                    </a>
+			    </div>
             </div>
+            <div class="division">
+                <div>
+                    <div id="image_holder" class="image_holder">
+                    <div class="card">
+                        <img src = "images/upload_images/{{image}}" style="height:320px;width:300px;"></img>
+                        <!-- <input id ="image_upload" type="file" accept="image/*">  -->
+                        {{!-- <h2>{{name}}</h2> --}}
+                    </div>
+                    </div>
+                </div>
+                <div style="line-height:1.2;">
+                <div class="card" style="height: 320px;width:500px">
+                        Name: {{name}}<br> <br> 
+                        Email: {{email}}<br> <br>
+                        Roll No: {{roll}}<br> <br>
+                        Phone: {{phone}}<br> <br>
+                        Hostel: {{hostel}}<br> <br>
+                        Room: {{room}}<br> <br>
+                        Points: {{points}}<br> <br>
+                </div>  
+                </div>
             </div>
         </div>
-        <div style="line-height:1.2;">
-           <div class="card" style="height: 320px;width:500px">
-                Name: {{name}}<br> <br> 
-                Email: {{email}}<br> <br>
-                Roll No: {{roll}}<br> <br>
-                Phone: {{phone}}<br> <br>
-                Hostel: {{hostel}}<br> <br>
-                Room: {{room}}<br> <br>
-                Points: {{points}}<br> <br>
-           </div>  
-        </div>
-    </div>
 </body>
  
 </html>

@@ -7,15 +7,14 @@
     }
 </style>
 <div class="main-body">
-
-<div class="flexed">
+	<div class="flexed">
 		<div class="page">
 			<div>
-				<div class="tab" style="float: right;" onclick="navigation()"><i class="fa fa-bars"></i></div>
-				<div class="button" style="text-align:center;width:10%;margin-right:10%;float:right" onclick="openModal('request')">
+				<div class="tab" style="float: right;" onclick="navigation()"><img src="images/bars.png" alt="alternative" height="30px"></div>
+				<div class="button" style="float:right;margin-top:50px;margin-right:100px" onclick="openModal('request')">
 					Add Request
 				</div>
-				<div><h3>shareMate <i class="fa fa-users" aria-hidden="true"></i></h3></div>
+				<div><img src="images/logo1.png" alt="alternative" height="150px"></div>
 			</div>
 			<div id="navmenu" class="menu">
 				<a href="/profile/{{currentUser}}">
@@ -43,7 +42,8 @@
 	             <div class="modal-content">
 		           <div class="close" onclick="closeModal('request')">&times;</div>
 		              	<div class="modal-header">
-			                <h2>Create Request</h2>
+			                <center><h3 style="color: azure;margin-top:10px">Create Request</h3></center>
+							<hr style="color:azure">
 						</div>
 				   <div class="modal-body">
 						<form method="post" action="/addrequest">
