@@ -86,12 +86,12 @@ exports.login= function(req,res){
 					res.redirect('/request');
 				}
 				else{
-					res.redirect('/login?err=Enter valid Password');
+					res.redirect('/?err=Enter valid Password');
 				}
 			});	
 		}
 		else{
-			res.redirect('/login?err=Enter valid Email');
+			res.redirect('/?err=Enter valid Email');
 		}
 	}
 	});

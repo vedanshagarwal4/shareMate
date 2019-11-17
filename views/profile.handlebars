@@ -1,83 +1,221 @@
-<html> 
-<head>
-<title>Centering Content</title>
-<style>
-#outer {
-    height:100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-h1 {
-    font-size: 60px;
-    color: #3399FF;
-    text-transform:capitalize;
-    margin-bottom:10px;
-    margin-top:20px;
-}
-#blueDiv {
-    width: 50%;
-    height: 85%;
-    background-color: #24f2a6;
-    text-align:center;
-    border-radius:25px;
-}
-</style>
-<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-</head>
- 
-<body>
-    <div class="main-body">
-            <div class="page">
-                <div>
-                    <div class="tab" style="float: right;" onclick="navigation()"><img src="images/bars.png" alt="alternative" height="30px"></div>
-                    <div style="float:right;margin-top:50px;margin-right:10px">
-                        Profile
-                    </div>
-                    <div><img src="images/logo1.png" alt="alternative" height="150px"></div>
-			    </div>
-                <div id="navmenu" class="menu">
-                    <a href="/request">
-                        <div class="menu-ele">
-                            Home
-                        </div>
-                    </a>
-                    <a href="/leaderboard">
-                        <div class="menu-ele">
-                            LeaderBoard
-                        </div>
-                    </a>
-                    <a href="/logout">
-                        <div class="menu-ele">
-                            Logout
-                        </div>
-                    </a>
-			    </div>
-            </div>
-            <div class="division">
-                <div>
-                    <div id="image_holder" class="image_holder">
-                    <div class="card">
-                        <img src = "images/upload_images/{{image}}" style="height:320px;width:300px;"></img>
-                        <!-- <input id ="image_upload" type="file" accept="image/*">  -->
-                        {{!-- <h2>{{name}}</h2> --}}
-                    </div>
-                    </div>
-                </div>
-                <div style="line-height:1.2;">
-                <div class="card" style="height: 320px;width:500px">
-                        Name: {{name}}<br> <br> 
-                        Email: {{email}}<br> <br>
-                        Roll No: {{roll}}<br> <br>
-                        Phone: {{phone}}<br> <br>
-                        Hostel: {{hostel}}<br> <br>
-                        Room: {{room}}<br> <br>
-                        Points: {{points}}<br> <br>
-                </div>  
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>MeetMe - Resume Website Template</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome.min.css">
+    <!-- Icon -->
+    <link rel="stylesheet" type="text/css" href="fonts/simple-line-icons.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="css/slicknav.css">
+    <!-- Menu CSS -->
+    <link rel="stylesheet" type="text/css" href="css/menu_sideslide.css">
+    <!-- Slider CSS -->
+    <link rel="stylesheet" type="text/css" href="css/slide-style.css">
+    <!-- Nivo Lightbox -->
+    <link rel="stylesheet" type="text/css" href="css/nivo-lightbox.css" >
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+  </head>
+  <body>
+
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+      <!-- Navbar Start -->
+      <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+              <span class="icon-menu"></span>
+            </button>
+            <a href="index1.html" class="navbar-brand"><img src="images/logo1.png" alt="" height="80px"></a>
+          </div>
+          <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="onepage-nev navbar-nav mr-auto w-100 justify-content-end clearfix">
+              <li class="nav-item active">
+                <a class="nav-link" href="#hero-area">
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/home">
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/pendingRequests">
+                  My Requests
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/leaderboard">
+                  Leaderboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">
+                  Logout
+                </a>
+            </ul>
+          </div>
         </div>
-</body>
- 
+
+        <!-- Mobile Menu Start -->
+        <ul class="onepage-nev mobile-menu">
+          <li>
+            <a href="/home">Home</a>
+          </li>
+          <li>
+            <a href="/pendingRequests">My Requests</a>
+          </li>
+          <li>
+            <a href="/leaderboard">Leaderboard</a>
+          </li>
+          <li>
+            <a href="/logout">Logout</a>
+          </li>
+        </ul>
+        <!-- Mobile Menu End -->
+      </nav>
+      <!-- Navbar End -->
+
+      <!-- Hero Area Start -->
+      <div id="hero-area" class="hero-area-bg">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 text-center">
+              <div class="contents">
+                <h5 style="margin-bottom: 3%;" class="script-font wow fadeInUp" data-wow-delay="0.2s">Hey</h5>
+                <h3 class="head-title wow fadeInUp" data-wow-delay="0.4s">{{name}}</h3>
+                <hr width="20%" style="border-top: 1px solid #fff;"><br><br>
+                <h4 data-wow-delay="0.4s">RATINGS : {{points}}</h4><br><br>
+                <center><a href="#about"><img src="images/down-arrow1.png" height="20px"></a></center>
+                <!-- <div class="header-button wow fadeInUp" data-wow-delay="1s">
+                  <a href="#" class="btn btn-common">Get a Free Quote</a>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Hero Area End -->
+
+    </header>
+    <!-- Header Area wrapper End -->
+
+    <!-- About Section Start -->
+    <section id="about" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="img-thumb wow fadeInLeft" data-wow-delay="0.3s">
+              <img class="img-fluid" src="images/upload_images/{{image}}" alt="">
+            </div>
+          </div> 
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="profile-wrapper wow fadeInRight" data-wow-delay="0.3s">
+              <h3>Hi Guys!</h3>
+              <p>Est diam venenatis arcu lacus ad. Duis quis eros. Cursus et rutrum eleifend sollicitudin lacinia justo id turpis. Nec convallis integer. Odio eget duis. Nulla aenean et. Blandit varius sollicitudin. Pellentesque leo primis neque urna magnis. Elit ut sollicitudin. Et est a nam dolores eget itaque sagittis et parturient duis est eleifend sociis rutrum odio viverra integer.</p>
+              <div class="about-profile">
+                <ul class="admin-profile">
+                  <li><span class="pro-title"> Name </span> <span class="pro-detail">{{name}}</span></li>
+                  <li><span class="pro-title"> Email </span> <span class="pro-detail">{{email}}</span></li>
+                  <li><span class="pro-title"> Roll No. </span> <span class="pro-detail">{{roll}}</span></li>
+                  <li><span class="pro-title"> Contact </span> <span class="pro-detail">{{phone}}</span></li>
+                  <li><span class="pro-title"> Hostel </span> <span class="pro-detail">{{hostel}}</span></li>
+                  <li><span class="pro-title"> Room No. </span> <span class="pro-detail">{{room}}</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>   
+        </div>
+      </div>
+    </section>
+    <!-- About Section End -->
+
+    
+
+    <!-- Counter Area Start-->
+    <section class="counter-section section-padding">
+      <div class="container">
+        <div class="row">
+          <!-- Counter Item -->
+          <div class="col-md-3 col-sm-6 work-counter-widget text-center">
+            <div class="counter wow fadeInDown" data-wow-delay="0.3s">
+              <div class="icon"><i class="icon-briefcase"></i></div>
+              <div class="counterUp">250</div>
+              <p>Requests Generated</p>
+            </div>
+          </div>
+          <!-- Counter Item -->
+          <div class="col-md-3 col-sm-6 work-counter-widget text-center">
+            <div class="counter wow fadeInDown" data-wow-delay="0.6s">
+              <div class="icon"><i class="icon-check"></i></div>
+              <div class="counterUp">950</div>
+              <p>Approved Requests</p>
+            </div>
+          </div>
+          <!-- Counter Item -->
+          <div class="col-md-3 col-sm-6 work-counter-widget text-center">
+            <div class="counter wow fadeInDown" data-wow-delay="0.9s">
+              <div class="icon"><i class="icon-diamond"></i></div>
+              <div class="counterUp">150</div>
+              <p>Points Received</p>
+            </div>
+          </div>
+          <!-- Counter Item -->
+          <div class="col-md-3 col-sm-6 work-counter-widget text-center">
+            <div class="counter wow fadeInDown" data-wow-delay="1.2s">
+              <div class="icon"><i class="icon-heart"></i></div>
+              <div class="counterUp">299</div>
+              <p>Happy Clients</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Counter Area End-->
+
+   
+
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+      <i class="icon-arrow-up"></i>
+    </a>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="js/jquery-min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.mixitup.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/jquery.nav.js"></script>
+    <script src="js/jquery.easing.min.js"></script>  
+    <script src="js/nivo-lightbox.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.min.js"></script>
+    <script src="js/map.js"></script> -->
+      
+  </body>
 </html>
