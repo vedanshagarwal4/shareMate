@@ -86,12 +86,12 @@ exports.login= function(req,res){
 					res.redirect('/request');
 				}
 				else{
-					res.redirect('/login?err=Enter valid Password');
+					res.redirect('/?err=Enter valid Password');
 				}
 			});	
 		}
 		else{
-			res.redirect('/login?err=Enter valid Email');
+			res.redirect('/?err=Enter valid Email');
 		}
 	}
 	});
@@ -128,10 +128,16 @@ exports.profile = function(req,res){
 		var roll = req.params.currentUser;
 		// console.log(roll);
 		let que= `select * from main where roll = '${roll}'`;
+		let que2 = `select count(*) as requestcount from requests where roll = '${roll}'`;
+		var reqcount;
+		
 		con.query(que,function(err,results,fields){
 			if(err)
 			throw err;
-		console.log(results[0]);
+			con.query(que2,(err,results1,fields)=>{
+				reqcount = results1[0].requestcount;
+			
+		// console.log(results[0]);
 			res.render('profile',{
 			    name:results[0].name,
 				roll:results[0].roll,
@@ -142,8 +148,11 @@ exports.profile = function(req,res){
 				points:results[0].points,
 				image:results[0].image,
 				total:results[0].total,
-				accepted: results[0].points/2
+				accepted: results[0].points/2,
+				pendingRequests: reqcount,
+				completed: results[0].total - reqcount
 			});
+		});
 		});
 	}
 }
