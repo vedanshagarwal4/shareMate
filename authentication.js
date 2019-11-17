@@ -44,7 +44,7 @@ exports.signup = function(req,res)
 
 		
 
-		que = `insert into main (name,roll,email,password,phone,hostel,room,points,image) values('${name}','${roll}','${email}','${hash}','${phone}','${hostel}','${room}',0,'${img_name}')`;
+		que = `insert into main (name,roll,email,password,phone,hostel,room,points,image,total) values('${name}','${roll}','${email}','${hash}','${phone}','${hostel}','${room}',0,'${img_name}',0)`;
 
 		con.query(que,function(qerr,qres){
 			if(qerr)
@@ -112,6 +112,14 @@ exports.request=function(req,res){
 		if(qerr){
 			console.log(qerr);
 		}
+		else{
+			que_one = `update main set total = total+1 where roll = '${roll}'`;
+			con.query(que_one,function(qerr,qres){
+				if(qerr) {
+					console.log("Error in upation");
+				}
+			});
+		}
 	});
 	res.redirect(`/pendingRequests/${roll}`);
 }
@@ -120,6 +128,10 @@ exports.profile = function(req,res){
 		var roll = req.params.currentUser;
 		// console.log(roll);
 		let que= `select * from main where roll = '${roll}'`;
+		let que2 = `select count(*) from requests where roll = '${roll}'`;
+		con.query(que2,(err,results,fields)=>{
+			console.log('HI'+results[0][0]);
+		});
 		con.query(que,function(err,results,fields){
 			if(err)
 			throw err;
@@ -132,8 +144,9 @@ exports.profile = function(req,res){
 				hostel:results[0].hostel,
 				room:results[0].room,
 				points:results[0].points,
-				image:results[0].image
-
+				image:results[0].image,
+				total:results[0].total,
+				accepted: results[0].points/2
 			});
 		});
 	}
