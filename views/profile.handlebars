@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,7 +44,7 @@
               <span class="icon-menu"></span>
               <span class="icon-menu"></span>
             </button>
-            <a href="index1.html" class="navbar-brand"><img src="images/logo1.png" alt="" height="80px"></a>
+            <a href="/request" class="navbar-brand"><img src="images/logo1.png" alt="" height="80px"></a>
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="onepage-nev navbar-nav mr-auto w-100 justify-content-end clearfix">
@@ -55,7 +54,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/pendingRequests">
+                <a class="nav-link" href="/pendingRequests/{{roll}}">
                   My Requests
                 </a>
               </li>
@@ -102,7 +101,7 @@
                 <h3 class="head-title wow fadeInUp" data-wow-delay="0.4s">{{name}}</h3>
                 <hr width="20%" style="border-top: 1px solid #fff;"><br><br>
                 <h4 data-wow-delay="0.4s">RATINGS : {{points}}</h4><br><br>
-                <center><a href="#about"><img src="images/down-arrow1.png" height="20px"></a></center>
+                <center><a href="#about"><img src="images/down-arrow.png" height="20px"></a></center>
                 <!-- <div class="header-button wow fadeInUp" data-wow-delay="1s">
                   <a href="#" class="btn btn-common">Get a Free Quote</a>
                 </div> -->
@@ -122,7 +121,7 @@
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <div class="img-thumb wow fadeInLeft" data-wow-delay="0.3s">
-              <img src="images/upload_images/{{image}}" alt="">
+              <img src="images/upload_images/{{image}}" alt="" height="650px" width="500px">
             </div>
           </div> 
           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -164,7 +163,15 @@
             <div class="counter wow fadeInDown" data-wow-delay="0.6s">
               <div class="icon"><i class="icon-check"></i></div>
               <div class="counterUp">{{accepted}}</div>
-              <p>Requests Approved</p>
+              <p>Requests Accepted</p>
+            </div>
+          </div>
+          <!-- Counter Item -->
+          <div class="col-md-3 col-sm-6 work-counter-widget text-center">
+            <div class="counter wow fadeInDown" data-wow-delay="1.2s">
+              <div class="icon"><i class="icon-heart"></i></div>
+              <div class="counterUp">{{completed}}</div>
+              <p>Requests Completed</p>
             </div>
           </div>
           <!-- Counter Item -->
@@ -175,14 +182,7 @@
               <p>Points Received</p>
             </div>
           </div>
-          <!-- Counter Item -->
-          <div class="col-md-3 col-sm-6 work-counter-widget text-center">
-            <div class="counter wow fadeInDown" data-wow-delay="1.2s">
-              <div class="icon"><i class="icon-heart"></i></div>
-              <div class="counterUp">299</div>
-              <p>Happy Clients</p>
-            </div>
-          </div>
+          
         </div>
       </div>
     </section>
@@ -214,92 +214,4 @@
       
   </body>
 </html>
-<!--
-=======
-<html> 
-<head>
-<title>Centering Content</title>
-<style>
-#outer {
-    height:100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-h1 {
-    font-size: 60px;
-    color: #3399FF;
-    text-transform:capitalize;
-    margin-bottom:10px;
-    margin-top:20px;
-}
-#blueDiv {
-    width: 50%;
-    height: 85%;
-    background-color: #24f2a6;
-    text-align:center;
-    border-radius:25px;
-}
-</style>
-<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-</head>
- 
-<body>
-    <div class="main-body">
-            <div class="page">
-                <div>
-                    <div class="tab" style="float: right;" onclick="navigation()"><img src="images/bars.png" alt="alternative" height="30px"></div>
-                    <div style="float:right;margin-top:50px;margin-right:10px">
-                        Profile
-                    </div>
-                    <div><img src="images/logo1.png" alt="alternative" height="150px"></div>
-			    </div>
-                <div id="navmenu" class="menu">
-                    <a href="/request">
-                        <div class="menu-ele">
-                            Home
-                        </div>
-                    </a>
-                    <a href="/leaderboard">
-                        <div class="menu-ele">
-                            LeaderBoard
-                        </div>
-                    </a>
-                    <a href="/logout">
-                        <div class="menu-ele">
-                            Logout
-                        </div>
-                    </a>
-			    </div>
-            </div>
-            <div class="division">
-                <div>
-                    <div id="image_holder" class="image_holder">
-                    <div class="card">
-                        <img src = "images/upload_images/{{image}}" style="height:320px;width:300px;"></img>
-                        <input id ="image_upload" type="file" accept="image/*">  
-                        {{!-- <h2>{{name}}</h2> --}}
-                    </div>
-                    </div>
-                </div>
-                <div style="line-height:1.2;">
-                <div class="card" style="height: 320px;width:500px">
-                        Name: {{name}}<br> <br> 
-                        Email: {{email}}<br> <br>
-                        Roll No: {{roll}}<br> <br>
-                        Phone: {{phone}}<br> <br>
-                        Hostel: {{hostel}}<br> <br>
-                        Room: {{room}}<br> <br>
-                        Points: {{points}}<br> <br>
-                        Total: {{total}} <br><br>
-                        Accepted: {{accepted}} <br><br>
-                </div>  
-                </div>
-            </div>
-        </div>
-</body>
- 
-</html>
--->
 
