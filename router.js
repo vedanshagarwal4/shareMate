@@ -9,8 +9,8 @@ const pendingRequestRouter = express.Router();
 const Render = require('./controllers/render');
 appRouter.get("/",(req,res)=>{
 	res.render("index1");
-
 });
+appRouter.get("/error",Render.handle);
 appRouter.get("/signup",(req,res)=>{
 	res.render("signup");
 });

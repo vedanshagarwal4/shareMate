@@ -92,3 +92,10 @@ else{
 		res.redirect('/');
 	}
 }
+
+exports.handle = function(req,res) {
+	console.log('hii');
+	res.render('index1',{
+		message: "User already exists"
+	});
+}
