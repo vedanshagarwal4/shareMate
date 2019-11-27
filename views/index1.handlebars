@@ -27,7 +27,16 @@
     <link href="css/swiper.css" rel="stylesheet">
   <link href="css/magnific-popup.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  
+  <script>
+      $(document).ready( function() {
+            if($('div#status').text()!='')
+      {
+                alert($('div#status').text());
+                console.log('khkhdhkdk');
+      }
+        });
+      
+  </script>
   <!-- Favicon  -->
     
 </head>
@@ -98,6 +107,7 @@
                     <div class="col-lg-6">
                         <div class="text-container">
                             <h1><span class="turquoise">shareMate</span></h1> <h4> Request-Approve-Repeat</h4>
+                            <div id='status' style="color: red;display:none">{{message}}</div>
                             <p class="p-large">Use shareMate as an online platform to advertise a product you no longer need or request one you need asap. Dive into a network of handy and secured product exchanges in your neighbourhood.</p>
                             <a class="btn-solid-lg page-scroll" href="#overview">DISCOVER</a>
                         </div> <!-- end of text-container -->
@@ -475,7 +485,7 @@
             </div> <!-- end of row -->
 
             <div class="row">
-              <div class="mapouter"><div class="gmap_canvas"><iframe width="1120" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=sardar%20vallabhbhai%20national%20institute%20of%20technology&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/">his comment is here</a></div><style>.mapouter{position:relative;text-align:right;height:400px;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:100%;}</style></div>
+              <div class="mapouter"><div class="gmap_canvas"><iframe width="1120" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=sardar%20vallabhbhai%20national%20institute%20of%20technology&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/">his comment is here</a></div><style>.mapouter{position:relative;text-align:right;height:400px;width:100%;}.gmap_canvas {overflow:hidden;background:none!important;height:400px;<width:100%></width:100%>;}</style></div>
             </div>
     
         </div> <!-- end of container -->

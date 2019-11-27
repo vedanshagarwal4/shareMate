@@ -20,6 +20,11 @@ exports.signup = function(req,res)
 		email:req.body.email,
 		roll:req.body.roll
 	};
+	let que = `select * from main where email = '${email}' OR roll = '${roll}'`;
+	con.query(que,function(qerr,results,fields){
+		if(qerr)
+		throw qerr;
+		if(results.length == 0){
 	console.log(req.files.fileupload);
 	 if (!req.files)
            return res.status(400).send('No files were uploaded.');
@@ -58,7 +63,13 @@ exports.signup = function(req,res)
 		});
 		});
           });
-      }
+	  }
+	}
+	else{
+		console.log('User already exits');
+		res.redirect('/error');
+	}
+	});
 }
 exports.login= function(req,res){
 	var roll = req.body.roll;
